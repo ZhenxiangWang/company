@@ -1,18 +1,17 @@
-import React from 'react';
-import { Button } from 'antd';
-import {
-  DownOutlined,
-} from '@ant-design/icons';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne, { TweenOneGroup } from 'rc-tween-one';
-import BannerAnim, { Element } from 'rc-banner-anim';
+import React from "react";
+import { Button } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import QueueAnim from "rc-queue-anim";
+import TweenOne, { TweenOneGroup } from "rc-tween-one";
+import BannerAnim, { Element } from "rc-banner-anim";
 /* replace-start-value = import { isImg } from './utils'; */
-import { isImg } from '../../../../utils';
+import { isImg } from "../../../../utils";
 /* replace-end-value */
-import 'rc-banner-anim/assets/index.css';
+import "rc-banner-anim/assets/index.css";
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 const BgElement = Element.BgElement;
 class Banner extends React.PureComponent {
@@ -31,16 +30,20 @@ class Banner extends React.PureComponent {
       const content = item.content;
       const button = item.button;
       const page = item.page;
-      const follow = !isMobile ? {
-        delay: 1000,
-        minMove: 0.1,
-        data: [
-          {
-            id: `bg${i}`, value: 15, type: 'x',
-          },
-          { id: `wrapperBlock${i}`, value: -15, type: 'x' },
-        ],
-      } : null;
+      const follow = !isMobile
+        ? {
+            delay: 1000,
+            minMove: 0.1,
+            data: [
+              {
+                id: `bg${i}`,
+                value: 15,
+                type: "x",
+              },
+              { id: `wrapperBlock${i}`, value: -15, type: "x" },
+            ],
+          }
+        : null;
       return (
         <Element
           key={i.toString()}
@@ -48,14 +51,10 @@ class Banner extends React.PureComponent {
           {...elem}
           prefixCls={elemClassName}
         >
-          <BgElement
-            key="bg"
-            {...bg}
-            id={`bg${i}`}
-          />
+          <BgElement key="bg" {...bg} id={`bg${i}`} />
           <div {...page}>
             <QueueAnim
-              type={['bottom', 'top']}
+              type={["bottom", "top"]}
               delay={200}
               key="text"
               {...textWrapper}
@@ -66,22 +65,27 @@ class Banner extends React.PureComponent {
                 {...title}
                 /* replace-start */
                 data-edit="text,image"
-              /* replace-end */
+                /* replace-end */
               >
                 {
-                  typeof title.children === 'string' && title.children.match(isImg) ? (
+                  typeof title.children === "string" &&
+                  title.children.match(isImg) ? (
                     <img src={title.children} width="100%" alt="img" />
-                  ) : /* replace-start-value = title.children */React.createElement('span', { dangerouslySetInnerHTML: { __html: title.children } })
+                  ) : (
+                    /* replace-start-value = title.children */ React.createElement(
+                      "span",
+                      { dangerouslySetInnerHTML: { __html: title.children } }
+                    )
+                  )
                   /* replace-end-value */
                 }
               </div>
-              <div
-                key="content"
-                {...content}
-              >
+              <div key="content" {...content}>
                 {
                   /* replace-start-value = content.children */
-                  React.createElement('span', { dangerouslySetInnerHTML: { __html: content.children } })
+                  React.createElement("span", {
+                    dangerouslySetInnerHTML: { __html: content.children },
+                  })
                   /* replace-end-value */
                 }
               </div>
@@ -95,7 +99,9 @@ class Banner extends React.PureComponent {
               >
                 {
                   /* replace-start-value = button.children */
-                  React.createElement('span', { dangerouslySetInnerHTML: { __html: button.children } })
+                  React.createElement("span", {
+                    dangerouslySetInnerHTML: { __html: button.children },
+                  })
                   /* replace-end-value */
                 }
               </Button>
@@ -105,13 +111,10 @@ class Banner extends React.PureComponent {
       );
     });
     return (
-      <div
-        {...props}
-        {...dataSource.wrapper}
-      >
+      <div {...props} {...dataSource.wrapper}>
         <TweenOneGroup
           key="bannerGroup"
-          enter={{ opacity: 0, type: 'from' }}
+          enter={{ opacity: 0, type: "from" }}
           leave={{ opacity: 0 }}
           component=""
         >
@@ -122,14 +125,17 @@ class Banner extends React.PureComponent {
             ref={(c) => {
               this.banner = c;
             }}
-          /* replace-end */
+            /* replace-end */
           >
             {childrenToRender}
           </BannerAnim>
         </TweenOneGroup>
         <TweenOne
           animation={{
-            y: '-=20', yoyo: true, repeat: -1, duration: 1000,
+            y: "-=20",
+            yoyo: true,
+            repeat: -1,
+            duration: 1000,
           }}
           className="banner2-icon"
           style={{ bottom: 40 }}
@@ -142,4 +148,4 @@ class Banner extends React.PureComponent {
   }
 }
 
-export default Banner;
+export default { component: Banner, dataSource };
