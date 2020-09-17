@@ -1,23 +1,23 @@
 /* eslint no-undef: 0 */
 /* eslint arrow-parens: 0 */
-import React from 'react';
-import { enquireScreen } from 'enquire-js';
+import React from "react";
+import { enquireScreen } from "enquire-js";
 
-import Nav0 from './Nav0';
-import Banner1 from './Banner1';
-import Content0 from './Content0';
-import Content3 from './Content3';
-import Feature6 from './Feature6';
-import Feature8 from './Feature8';
-import Pricing2 from './Pricing2';
-import Content9 from './Content9';
-import Teams3 from './Teams3';
-import Footer1 from './Footer1';
+import Nav0 from "./Nav0";
+import Banner1 from "./Banner1";
+import Content0 from "../components/Content0";
+import Content3 from "./Content3";
+import Feature6 from "./Feature6";
+import Feature8 from "./Feature8";
+import Pricing2 from "./Pricing2";
+import Content9 from "./Content9";
+import Teams3 from "./Teams3";
+import Footer1 from "./Footer1";
 
 import {
   Nav00DataSource,
   Banner10DataSource,
-  Content00DataSource,
+  // Content00DataSource,
   Content30DataSource,
   Feature60DataSource,
   Feature80DataSource,
@@ -25,15 +25,15 @@ import {
   Content90DataSource,
   Teams30DataSource,
   Footer10DataSource,
-} from './data.source';
-import './less/antMotionStyle.less';
+} from "./data.source";
+import "./less/antMotionStyle.less";
 
 let isMobile;
 enquireScreen((b) => {
   isMobile = b;
 });
 
-const { location = {} } = typeof window !== 'undefined' ? window : {};
+const { location = {} } = typeof window !== "undefined" ? window : {};
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -76,10 +76,10 @@ export default class Home extends React.Component {
         dataSource={Banner10DataSource}
         isMobile={this.state.isMobile}
       />,
-      <Content0
+      <Content0.component
         id="Content0_0"
         key="Content0_0"
-        dataSource={Content00DataSource}
+        dataSource={Content0.dataSource}
         isMobile={this.state.isMobile}
       />,
       <Content3
