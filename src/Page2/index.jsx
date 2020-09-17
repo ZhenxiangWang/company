@@ -1,18 +1,13 @@
 /* eslint no-undef: 0 */
 /* eslint arrow-parens: 0 */
-import React from 'react';
-import { enquireScreen } from 'enquire-js';
+import React from "react";
+import { enquireScreen } from "enquire-js";
 
-import Content0 from './Content0';
-import Content7 from './Content7';
+import Content0 from "./Content0";
+import Content7 from "./Content7";
 
-import {
-  Content00DataSource,
-  Content70DataSource,
-} from './data.source.js';
-
-import './less/antMotionStyle.less';
-
+import { Content00DataSource, Content70DataSource } from "./data.source.js";
+import "./less/antMotionStyle.less";
 let isMobile;
 enquireScreen((b) => {
   isMobile = b;
