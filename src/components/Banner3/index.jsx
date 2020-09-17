@@ -1,11 +1,13 @@
-import React from 'react';
-import { Button } from 'antd';
-import QueueAnim from 'rc-queue-anim';
-import Texty from 'rc-texty';
-import 'rc-texty/assets/index.css';
+import React from "react";
+import { Button } from "antd";
+import QueueAnim from "rc-queue-anim";
+import Texty from "rc-texty";
+import "rc-texty/assets/index.css";
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
+
 class Banner extends React.PureComponent {
   render() {
     const { ...currentProps } = this.props;
@@ -14,7 +16,7 @@ class Banner extends React.PureComponent {
     delete currentProps.isMobile;
     const children = dataSource.textWrapper.children.map((item) => {
       const { name, texty, ...$item } = item;
-      if (name.match('button')) {
+      if (name.match("button")) {
         return (
           <Button
             type="primary"
@@ -24,46 +26,40 @@ class Banner extends React.PureComponent {
             data-edit="link,text"
             /* replace-end */
           >
-            {/* replace-start-value = item.children */
-              React.createElement('span', { dangerouslySetInnerHTML: { __html: item.children } })
-           /* replace-end-value */}
+            {
+              /* replace-start-value = item.children */
+              React.createElement("span", {
+                dangerouslySetInnerHTML: { __html: item.children },
+              })
+              /* replace-end-value */
+            }
           </Button>
         );
       }
       /* replace-start */
       if (texty) {
-        $item['data-edit'] = 'texty';
+        $item["data-edit"] = "texty";
       }
       /* replace-end */
       return (
-        <div
-          key={name}
-          {...$item}
-        >
-          {
-            texty
-              ? (
-                <Texty type="mask-bottom">
-                  {item.children}
-                </Texty>
-              )
-              : (
-                /* replace-start-value = item.children */
-                React.createElement('span', { dangerouslySetInnerHTML: { __html: item.children } })
-                /* replace-end-value */
-              )
-          }
+        <div key={name} {...$item}>
+          {texty ? (
+            <Texty type="mask-bottom">{item.children}</Texty>
+          ) : (
+            /* replace-start-value = item.children */
+            React.createElement("span", {
+              dangerouslySetInnerHTML: { __html: item.children },
+            })
+            /* replace-end-value */
+          )}
         </div>
       );
     });
     return (
-      <div
-        {...currentProps}
-        {...dataSource.wrapper}
-      >
+      <div {...currentProps} {...dataSource.wrapper}>
         <QueueAnim
           key="QueueAnim"
-          type={['bottom', 'top']}
+          type={["bottom", "top"]}
           delay={200}
           {...dataSource.textWrapper}
         >
@@ -73,4 +69,4 @@ class Banner extends React.PureComponent {
     );
   }
 }
-export default Banner;
+export default { component: Banner, dataSource };

@@ -193,14 +193,14 @@ export const RemoveLocalStorage = (width = "18") => (
   </svg>
 );
 
-function getEnumerableKeys(target) {
-  const keys = [];
-  for (const key in target) {
-    /* eslint-disable-line */
-    keys.push(key);
-  }
-  return keys;
-}
+// function getEnumerableKeys(target) {
+//   const keys = [];
+//   for (const key in target) {
+//     /* eslint-disable-line */
+//     keys.push(key);
+//   }
+//   return keys;
+// }
 
 // export function objectEqual(obj1, obj2) {
 //   if (obj1 === obj2 || deepEql(obj1, obj2)) {

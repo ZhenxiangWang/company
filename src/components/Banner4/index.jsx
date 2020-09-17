@@ -1,12 +1,14 @@
-import React from 'react';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
+import React from "react";
+import QueueAnim from "rc-queue-anim";
+import TweenOne from "rc-tween-one";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from '../../utils';
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
+
 class Banner4 extends React.PureComponent {
   render() {
     const { ...tagProps } = this.props;
@@ -14,39 +16,34 @@ class Banner4 extends React.PureComponent {
     delete tagProps.dataSource;
     delete tagProps.isMobile;
     const animType = {
-      queue: 'bottom',
+      queue: "bottom",
       one: {
-        y: '+=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
+        y: "+=30",
+        opacity: 0,
+        type: "from",
+        ease: "easeOutQuad",
       },
     };
     return (
-      <div
-        {...tagProps}
-        {...dataSource.wrapper}
-      >
-        <div
-          {...dataSource.page}
-        >
+      <div {...tagProps} {...dataSource.wrapper}>
+        <div {...dataSource.page}>
           <QueueAnim
             key="text"
             type={animType.queue}
             leaveReverse
-            ease={['easeOutQuad', 'easeInQuad']}
+            ease={["easeOutQuad", "easeInQuad"]}
             {...dataSource.childWrapper}
-            componentProps={{ md: dataSource.childWrapper.md, xs: dataSource.childWrapper.xs }}
+            componentProps={{
+              md: dataSource.childWrapper.md,
+              xs: dataSource.childWrapper.xs,
+            }}
             /* replace-start */
             data-edit="childWrapper"
-          /* replace-end */
+            /* replace-end */
           >
-            {
-              dataSource.childWrapper.children.map(getChildrenToRender)
-            }
+            {dataSource.childWrapper.children.map(getChildrenToRender)}
           </QueueAnim>
-          <TweenOne
-            animation={animType.one}
-            key="title"
-            {...dataSource.image}
-          >
+          <TweenOne animation={animType.one} key="title" {...dataSource.image}>
             <img src={dataSource.image.children} width="100%" alt="img" />
           </TweenOne>
         </div>
@@ -54,4 +51,4 @@ class Banner4 extends React.PureComponent {
     );
   }
 }
-export default Banner4;
+export default { component: Banner4, dataSource };

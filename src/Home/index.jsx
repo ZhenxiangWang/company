@@ -3,7 +3,7 @@
 import React from "react";
 import { enquireScreen } from "enquire-js";
 
-import Nav0 from "./Nav0";
+import Nav0 from "../components/Nav0";
 import Banner1 from "./Banner1";
 import Content0 from "../components/Content0";
 import Content3 from "./Content3";
@@ -15,9 +15,7 @@ import Teams3 from "./Teams3";
 import Footer1 from "./Footer1";
 
 import {
-  Nav00DataSource,
   Banner10DataSource,
-  // Content00DataSource,
   Content30DataSource,
   Feature60DataSource,
   Feature80DataSource,
@@ -27,7 +25,6 @@ import {
   Footer10DataSource,
 } from "./data.source";
 import "./less/antMotionStyle.less";
-
 let isMobile;
 enquireScreen((b) => {
   isMobile = b;
@@ -64,10 +61,10 @@ export default class Home extends React.Component {
 
   render() {
     const children = [
-      <Nav0
+      <Nav0.component
         id="Nav0_0"
         key="Nav0_0"
-        dataSource={Nav00DataSource}
+        dataSource={Nav0.dataSource}
         isMobile={this.state.isMobile}
       />,
       <Banner1
