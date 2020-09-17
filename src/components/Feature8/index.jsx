@@ -1,14 +1,15 @@
-import React from 'react';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import QueueAnim from 'rc-queue-anim';
-import { Carousel as AntCarousel, Row, Col } from 'antd';
+import React from "react";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
+import QueueAnim from "rc-queue-anim";
+import { Carousel as AntCarousel, Row, Col } from "antd";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { polyfill } from 'react-lifecycles-compat';
-import { getChildrenToRender } from '../../utils';
+import { polyfill } from "react-lifecycles-compat";
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 class Feature8 extends React.PureComponent {
   constructor(props) {
@@ -23,7 +24,10 @@ class Feature8 extends React.PureComponent {
   }
 
   /* replace-start */
-  static getDerivedStateFromProps(props, { prevProps, _self, current: prevCurrent }) {
+  static getDerivedStateFromProps(
+    props,
+    { prevProps, _self, current: prevCurrent }
+  ) {
     const { func } = props;
     const { children } = props.dataSource.Carousel.children;
     const childLen = children.length;
@@ -31,9 +35,12 @@ class Feature8 extends React.PureComponent {
       prevProps: props,
     };
     if (prevProps) {
-      const { carousel } = _self.carouselRef.current ? _self.carouselRef.current.childRefs : {};
+      const { carousel } = _self.carouselRef.current
+        ? _self.carouselRef.current.childRefs
+        : {};
       if (func) {
-        const current = func.currentPage > childLen ? childLen : func.currentPage;
+        const current =
+          func.currentPage > childLen ? childLen : func.currentPage;
         if (_self.carouselRef.current) {
           carousel.goTo(current - 1);
         }
@@ -50,42 +57,56 @@ class Feature8 extends React.PureComponent {
   onTitleClick = (_, i) => {
     const carouselRef = this.carouselRef.current.childRefs.carousel;
     carouselRef.goTo(i);
-  }
+  };
 
   onBeforeChange = (_, newIndex) => {
     this.setState({
       current: newIndex,
     });
-  }
+  };
 
   getChildrenToRender = (dataSource) => {
     const { current } = this.state;
     const { Carousel, childWrapper: buttonWrapper } = dataSource;
     const { children: carouselChild, wrapper, ...carouselProps } = Carousel;
-    const { titleWrapper, children: childWrapper, ...childrenProps } = carouselChild;
+    const {
+      titleWrapper,
+      children: childWrapper,
+      ...childrenProps
+    } = carouselChild;
 
-    const { barWrapper, title: titleChild, ...titleWrapperProps } = titleWrapper;
+    const {
+      barWrapper,
+      title: titleChild,
+      ...titleWrapperProps
+    } = titleWrapper;
     const titleToRender = [];
 
     const childrenToRender = childWrapper.map((item, ii) => {
       const { title, children: childRow, ...rowProps } = item;
       if (childWrapper.length > 1) {
-        titleToRender.push((
+        titleToRender.push(
           <div
             {...title}
             key={ii.toString()}
             onClick={(e) => {
               this.onTitleClick(e, ii);
             }}
-            className={ii === current ? `${title.className || ''} active` : title.className}
+            className={
+              ii === current
+                ? `${title.className || ""} active`
+                : title.className
+            }
           >
             {
               /* replace-start-value = title.children */
-              React.createElement('span', { dangerouslySetInnerHTML: { __html: title.children } })
+              React.createElement("span", {
+                dangerouslySetInnerHTML: { __html: title.children },
+              })
               /* replace-end-value */
             }
           </div>
-        ));
+        );
       }
       const childrenItem = childRow.map(($item, i) => {
         const { children: colChild, arrow, ...colProps } = $item;
@@ -96,14 +117,16 @@ class Feature8 extends React.PureComponent {
             key={i.toString()}
             /* replace-start */
             data-edit="Col"
-          /* replace-end */
+            /* replace-end */
           >
-            <div
-              {...childProps}
-            >
+            <div {...childProps}>
               {colChild.children.map(getChildrenToRender)}
             </div>
-            {arrow && <div {...arrow}><img src={arrow.children} alt="img" /></div>}
+            {arrow && (
+              <div {...arrow}>
+                <img src={arrow.children} alt="img" />
+              </div>
+            )}
           </Col>
         );
       });
@@ -116,7 +139,7 @@ class Feature8 extends React.PureComponent {
             /* replace-start */
             data-edit="Row"
             /* replace-end */
-            componentProps={{ type: 'flex' }}
+            componentProps={{ type: "flex" }}
             {...rowProps}
           >
             {childrenItem}
@@ -134,9 +157,7 @@ class Feature8 extends React.PureComponent {
       >
         {childWrapper.length > 1 && (
           <div {...titleWrapperProps} key="title">
-            <div {...titleChild}>
-              {titleToRender}
-            </div>
+            <div {...titleChild}>{titleToRender}</div>
           </div>
         )}
         <AntCarousel
@@ -158,7 +179,7 @@ class Feature8 extends React.PureComponent {
         </div>
       </QueueAnim>
     );
-  }
+  };
 
   render() {
     const { dataSource, isMobile, ...props } = this.props;
@@ -168,17 +189,19 @@ class Feature8 extends React.PureComponent {
         {...props}
         {...dataSource.wrapper}
         /* replace-start */
-        data-comp={[`carousel-switch={ "current": ${
-          this.state.current + 1}, "total": ${dataSource.Carousel.children.children.length
-        } ,"childRoute": ["Carousel","children"] }`]}
-      /* replace-end */
+        data-comp={[
+          `carousel-switch={ "current": ${this.state.current + 1}, "total": ${
+            dataSource.Carousel.children.children.length
+          } ,"childRoute": ["Carousel","children"] }`,
+        ]}
+        /* replace-end */
       >
         <div {...dataSource.page}>
           <div
             {...dataSource.titleWrapper}
             /* replace-start */
             data-edit="titleWrapper"
-          /* replace-end */
+            /* replace-end */
           >
             {titleWrapper.children.map(getChildrenToRender)}
           </div>
@@ -191,5 +214,5 @@ class Feature8 extends React.PureComponent {
   }
 }
 /* replace-start-value = export default Feature8 */
-export default polyfill(Feature8);
+export default { component: polyfill(Feature8), dataSource };
 /* replace-end-value */
