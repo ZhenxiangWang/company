@@ -1,8 +1,9 @@
-import React from 'react';
-import QueueAnim from 'rc-queue-anim';
+import React from "react";
+import QueueAnim from "rc-queue-anim";
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 class Content10 extends React.PureComponent {
   constructor(props) {
@@ -14,19 +15,19 @@ class Content10 extends React.PureComponent {
 
   onClick = () => {
     window.open(this.props.dataSource.Content.children.url.children);
-  }
+  };
 
   markerEnter = () => {
     this.setState({
       showInfo: true,
     });
-  }
+  };
 
   markerLeave = () => {
     this.setState({
       showInfo: false,
     });
-  }
+  };
 
   render() {
     const { ...props } = this.props;
@@ -34,11 +35,7 @@ class Content10 extends React.PureComponent {
     delete props.dataSource;
     delete props.isMobile;
     return (
-      <div
-        {...props}
-        {...dataSource.wrapper}
-
-      >
+      <div {...props} {...dataSource.wrapper}>
         <div
           {...dataSource.Content}
           onMouseEnter={this.markerEnter}
@@ -47,13 +44,13 @@ class Content10 extends React.PureComponent {
           onTouchEnd={this.onClick}
           /* replace-start */
           data-edit="Content"
-        /* replace-end */
+          /* replace-end */
         >
           <div
             {...dataSource.Content.children.icon}
             /* replace-start */
             data-edit="Content,image"
-          /* replace-end */
+            /* replace-end */
           >
             <img src={dataSource.Content.children.icon.children} alt="img" />
           </div>
@@ -61,9 +58,12 @@ class Content10 extends React.PureComponent {
             {...dataSource.Content.children.iconShadow}
             /* replace-start */
             data-edit="Content,image"
-          /* replace-end */
+            /* replace-end */
           >
-            <img src={dataSource.Content.children.iconShadow.children} alt="img" />
+            <img
+              src={dataSource.Content.children.iconShadow.children}
+              alt="img"
+            />
           </div>
         </div>
         <QueueAnim type="scale">
@@ -79,4 +79,4 @@ class Content10 extends React.PureComponent {
   }
 }
 
-export default Content10;
+export default { component: Content10, dataSource };

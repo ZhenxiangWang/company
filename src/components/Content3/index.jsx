@@ -1,17 +1,18 @@
-import React from 'react';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
-import { Row, Col } from 'antd';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import React from "react";
+import QueueAnim from "rc-queue-anim";
+import TweenOne from "rc-tween-one";
+import { Row, Col } from "antd";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from '../../utils';
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 class Content3 extends React.PureComponent {
-  getDelay = (e, b) => ((e % b) * 100) + (Math.floor(e / b) * 100) + (b * 100);
+  getDelay = (e, b) => (e % b) * 100 + Math.floor(e / b) * 100 + b * 100;
 
   render() {
     const { ...props } = this.props;
@@ -23,9 +24,12 @@ class Content3 extends React.PureComponent {
       const childObj = item.children;
       const delay = isMobile ? i * 50 : this.getDelay(i, 24 / item.md);
       const liAnim = {
-        opacity: 0, type: 'from', ease: 'easeOutQuad', delay,
+        opacity: 0,
+        type: "from",
+        ease: "easeOutQuad",
+        delay,
       };
-      const childrenAnim = { ...liAnim, x: '+=10', delay: delay + 100 };
+      const childrenAnim = { ...liAnim, x: "+=10", delay: delay + 100 };
       clearFloatNum += item.md;
       clearFloatNum = clearFloatNum > 24 ? 0 : clearFloatNum;
       return (
@@ -35,14 +39,21 @@ class Content3 extends React.PureComponent {
           key={item.name}
           {...item}
           componentProps={{ md: item.md, xs: item.xs }}
-          className={!clearFloatNum ? `${item.className || ''} clear-both`.trim() : item.className}
+          className={
+            !clearFloatNum
+              ? `${item.className || ""} clear-both`.trim()
+              : item.className
+          }
           /* replace-start */
           data-edit="Col"
-        /* replace-end */
+          /* replace-end */
         >
           <TweenOne
             animation={{
-              x: '-=10', opacity: 0, type: 'from', ease: 'easeOutQuad',
+              x: "-=10",
+              opacity: 0,
+              type: "from",
+              ease: "easeOutQuad",
             }}
             key="img"
             {...childObj.icon}
@@ -58,7 +69,9 @@ class Content3 extends React.PureComponent {
             >
               {
                 /* replace-start-value = childObj.title.children */
-                React.createElement('span', { dangerouslySetInnerHTML: { __html: childObj.title.children } })
+                React.createElement("span", {
+                  dangerouslySetInnerHTML: { __html: childObj.title.children },
+                })
                 /* replace-end-value */
               }
             </TweenOne>
@@ -70,7 +83,11 @@ class Content3 extends React.PureComponent {
             >
               {
                 /* replace-start-value = childObj.content.children */
-                React.createElement('span', { dangerouslySetInnerHTML: { __html: childObj.content.children } })
+                React.createElement("span", {
+                  dangerouslySetInnerHTML: {
+                    __html: childObj.content.children,
+                  },
+                })
                 /* replace-end-value */
               }
             </TweenOne>
@@ -80,30 +97,23 @@ class Content3 extends React.PureComponent {
     });
     return (
       <div {...props} {...dataSource.wrapper}>
-        <div
-          {...dataSource.page}
-        >
+        <div {...dataSource.page}>
           <div
             {...dataSource.titleWrapper}
             /* replace-start */
             data-edit="titleWrapper"
-          /* replace-end */
+            /* replace-end */
           >
-            {
-              dataSource.titleWrapper.children.map(getChildrenToRender)
-            }
+            {dataSource.titleWrapper.children.map(getChildrenToRender)}
           </div>
           <OverPack {...dataSource.OverPack}>
-            <QueueAnim
-              key="u"
-              type="bottom"
-            >
+            <QueueAnim key="u" type="bottom">
               <Row
                 key="row"
                 {...dataSource.block}
                 /* replace-start */
                 data-edit="Row"
-              /* replace-end */
+                /* replace-end */
               >
                 {children}
               </Row>
@@ -115,4 +125,4 @@ class Content3 extends React.PureComponent {
   }
 }
 
-export default Content3;
+export default { component: Content3, dataSource };

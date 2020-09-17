@@ -1,15 +1,17 @@
-import React from 'react';
-import TweenOne from 'rc-tween-one';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import { Tabs, Row, Col } from 'antd';
-import { Icon } from '@ant-design/compatible';
+import React from "react";
+import TweenOne from "rc-tween-one";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
+import { Tabs, Row, Col } from "antd";
+import { Icon } from "@ant-design/compatible";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { polyfill } from 'react-lifecycles-compat';
-import { getChildrenToRender } from '../../utils';
+import { polyfill } from "react-lifecycles-compat";
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
+
 const TabPane = Tabs.TabPane;
 
 class Content7 extends React.Component {
@@ -22,7 +24,8 @@ class Content7 extends React.Component {
     if (prevProps && props !== prevProps) {
       const childLen = props.dataSource.block.children.length;
       if (func) {
-        const current = func.currentPage > childLen ? childLen : func.currentPage;
+        const current =
+          func.currentPage > childLen ? childLen : func.currentPage;
         nextState.current = current;
       } else if (prevCurrent > childLen) {
         nextState.current = childLen;
@@ -43,7 +46,7 @@ class Content7 extends React.Component {
 
   onChange = (key) => {
     this.setState({ current: parseFloat(key) });
-  }
+  };
 
   getBlockChildren = (item, i) => {
     const { tag, content } = item;
@@ -55,12 +58,12 @@ class Content7 extends React.Component {
     return (
       <TabPane
         key={i + 1}
-        tab={(
+        tab={
           <div
             className={tag.className}
             /* replace-start */
             {...tag}
-          /* replace-end */
+            /* replace-end */
           >
             <Icon
               type={iconChildren}
@@ -68,28 +71,32 @@ class Content7 extends React.Component {
               /* replace-start */
               {...icon}
               data-edit="icon"
-              children=""// eslint-disable-line
-            /* replace-end */
+              children="" // eslint-disable-line
+              /* replace-end */
             />
-            <div
-              {...tagText}
-            >
+            <div {...tagText}>
               {
                 /* replace-start-value = tagText.children */
-                React.createElement('span', { dangerouslySetInnerHTML: { __html: tagText.children } })
+                React.createElement("span", {
+                  dangerouslySetInnerHTML: { __html: tagText.children },
+                })
                 /* replace-end-value */
               }
             </div>
           </div>
-        )}
+        }
         className={item.className}
         /* replace-start */
         {...item}
-      /* replace-end */
+        /* replace-end */
       >
         <TweenOne.TweenOneGroup
           enter={{
-            y: 30, delay: 300, opacity: 0, type: 'from', ease: 'easeOutQuad',
+            y: 30,
+            delay: 300,
+            opacity: 0,
+            type: "from",
+            ease: "easeOutQuad",
           }}
           leave={null}
           component=""
@@ -102,7 +109,7 @@ class Content7 extends React.Component {
               /* replace-start */
               {...content}
               data-edit="Row"
-            /* replace-end */
+              /* replace-end */
             >
               <Col
                 className={text.className}
@@ -110,12 +117,14 @@ class Content7 extends React.Component {
                 md={text.md}
                 /* replace-start */
                 {...text}
-                data-edit={['Col', 'text']}
-              /* replace-end */
+                data-edit={["Col", "text"]}
+                /* replace-end */
               >
                 {
                   /* replace-start-value = textChildren */
-                  React.createElement('span', { dangerouslySetInnerHTML: { __html: textChildren } })
+                  React.createElement("span", {
+                    dangerouslySetInnerHTML: { __html: textChildren },
+                  })
                   /* replace-end-value */
                 }
               </Col>
@@ -125,8 +134,8 @@ class Content7 extends React.Component {
                 md={img.md}
                 /* replace-start */
                 {...img}
-                data-edit={['Col', 'image']}
-              /* replace-end */
+                data-edit={["Col", "image"]}
+                /* replace-end */
               >
                 <img src={img.children} width="100%" alt="img" />
               </Col>
@@ -148,30 +157,29 @@ class Content7 extends React.Component {
         {...props}
         {...dataSource.wrapper}
         /* replace-start */
-        data-comp={[`tabs-switch={ "current": ${
-          this.state.current}, "total": ${dataSource.block.children.length
-        } ,"childRoute": ["block"] }`]}
-      /* replace-end */
+        data-comp={[
+          `tabs-switch={ "current": ${this.state.current}, "total": ${dataSource.block.children.length} ,"childRoute": ["block"] }`,
+        ]}
+        /* replace-end */
       >
         <div {...dataSource.page}>
           <div
             {...dataSource.titleWrapper}
             /* replace-start */
             data-edit="titleWrapper"
-          /* replace-end */
+            /* replace-end */
           >
-            {
-              dataSource.titleWrapper.children.map(getChildrenToRender)
-            }
+            {dataSource.titleWrapper.children.map(getChildrenToRender)}
           </div>
 
-          <OverPack
-            {...dataSource.OverPack}
-          >
+          <OverPack {...dataSource.OverPack}>
             <TweenOne.TweenOneGroup
               key="tabs"
               enter={{
-                y: 30, opacity: 0, delay: 200, type: 'from',
+                y: 30,
+                opacity: 0,
+                delay: 200,
+                type: "from",
               }}
               leave={{ y: 30, opacity: 0 }}
               {...dataSource.tabsWrapper}
@@ -193,5 +201,5 @@ class Content7 extends React.Component {
 }
 
 /* replace-start-value = export default Content7 */
-export default polyfill(Content7);
+export default { component: polyfill(Content7), dataSource };
 /* replace-end-value */
