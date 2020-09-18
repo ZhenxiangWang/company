@@ -1,23 +1,28 @@
-import React from 'react';
-import TweenOne from 'rc-tween-one';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import { Row, Col } from 'antd';
-import QueueAnim from 'rc-queue-anim';
+import React from "react";
+import TweenOne from "rc-tween-one";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
+import { Row, Col } from "antd";
+import QueueAnim from "rc-queue-anim";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from '../../utils';
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 class Content8 extends React.PureComponent {
-  getDelay = (e, b) => ((e % b) * 100) + (Math.floor(e / b) * 100) + (b * 100);
+  getDelay = (e, b) => (e % b) * 100 + Math.floor(e / b) * 100 + b * 100;
 
   getBlockChildren = (item, i) => {
     const children = item.children;
     const delay = this.props.isMobile ? i * 50 : this.getDelay(i, 24 / item.md);
     const liAnim = {
-      y: 30, opacity: 0, type: 'from', ease: 'easeOutQuad', delay,
+      y: 30,
+      opacity: 0,
+      type: "from",
+      ease: "easeOutQuad",
+      delay,
     };
     return (
       <TweenOne
@@ -27,7 +32,7 @@ class Content8 extends React.PureComponent {
         {...item}
         /* replace-start */
         data-edit="Col"
-      /* replace-end */
+        /* replace-end */
       >
         <div {...children}>
           <div className="image-wrapper" {...children.img}>
@@ -36,21 +41,25 @@ class Content8 extends React.PureComponent {
           <h2 {...children.title}>
             {
               /* replace-start-value = children.title.children */
-              React.createElement('span', { dangerouslySetInnerHTML: { __html: children.title.children } })
+              React.createElement("span", {
+                dangerouslySetInnerHTML: { __html: children.title.children },
+              })
               /* replace-end-value */
             }
           </h2>
           <div {...children.content}>
             {
               /* replace-start-value = children.content.children */
-              React.createElement('span', { dangerouslySetInnerHTML: { __html: children.content.children } })
+              React.createElement("span", {
+                dangerouslySetInnerHTML: { __html: children.content.children },
+              })
               /* replace-end-value */
             }
           </div>
         </div>
       </TweenOne>
     );
-  }
+  };
 
   render() {
     const { ...props } = this.props;
@@ -59,10 +68,7 @@ class Content8 extends React.PureComponent {
     delete props.isMobile;
     const children = dataSource.block.children.map(this.getBlockChildren);
     return (
-      <div
-        {...props}
-        {...dataSource.wrapper}
-      >
+      <div {...props} {...dataSource.wrapper}>
         <div {...dataSource.page}>
           <div
             {...dataSource.titleWrapper}
@@ -70,23 +76,16 @@ class Content8 extends React.PureComponent {
             data-edit="titleWrapper"
             /* replace-end */
           >
-            {
-              dataSource.titleWrapper.children.map(getChildrenToRender)
-            }
+            {dataSource.titleWrapper.children.map(getChildrenToRender)}
           </div>
-          <OverPack
-            {...dataSource.OverPack}
-          >
-            <QueueAnim
-              type="bottom"
-              key="img"
-            >
+          <OverPack {...dataSource.OverPack}>
+            <QueueAnim type="bottom" key="img">
               <Row
                 {...dataSource.block}
                 key="img"
                 /* replace-start */
                 data-edit="Row"
-              /* replace-end */
+                /* replace-end */
               >
                 {children}
               </Row>
@@ -98,4 +97,4 @@ class Content8 extends React.PureComponent {
   }
 }
 
-export default Content8;
+export default { component: Content8, dataSource };

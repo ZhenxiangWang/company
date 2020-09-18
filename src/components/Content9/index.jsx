@@ -1,12 +1,13 @@
-import React from 'react';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import QueueAnim from 'rc-queue-anim';
+import React from "react";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
+import QueueAnim from "rc-queue-anim";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from '../../utils';
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 class Content9 extends React.PureComponent {
   getBlockChildren = (block, i) => {
@@ -22,22 +23,30 @@ class Content9 extends React.PureComponent {
         <div key="time" {...item.time}>
           {
             /* replace-start-value = item.time.children */
-            React.createElement('span', { dangerouslySetInnerHTML: { __html: item.time.children } })
+            React.createElement("span", {
+              dangerouslySetInnerHTML: { __html: item.time.children },
+            })
             /* replace-end-value */
           }
         </div>
         <h2 key="title" {...item.title}>
-          <i {...item.icon}><img src={item.icon.children} alt="img" /></i>
+          <i {...item.icon}>
+            <img src={item.icon.children} alt="img" />
+          </i>
           {
             /* replace-start-value = item.title.children */
-            React.createElement('span', { dangerouslySetInnerHTML: { __html: item.title.children } })
+            React.createElement("span", {
+              dangerouslySetInnerHTML: { __html: item.title.children },
+            })
             /* replace-end-value */
           }
         </h2>
         <div key="p" {...item.content}>
           {
             /* replace-start-value = item.content.children */
-            React.createElement('span', { dangerouslySetInnerHTML: { __html: item.content.children } })
+            React.createElement("span", {
+              dangerouslySetInnerHTML: { __html: item.content.children },
+            })
             /* replace-end-value */
           }
         </div>
@@ -49,13 +58,13 @@ class Content9 extends React.PureComponent {
         {...block}
         /* replace-start */
         data-edit="OverPack"
-      /* replace-end */
+        /* replace-end */
       >
         {isMobile && textWrapper}
         <QueueAnim
           className="image-wrapper"
           key="image"
-          type={isMobile ? 'right' : 'bottom'}
+          type={isMobile ? "right" : "bottom"}
           leaveReverse
           delay={isMobile ? [100, 0] : 0}
           {...item.imgWrapper}
@@ -67,14 +76,18 @@ class Content9 extends React.PureComponent {
             <div key="name" {...item.name}>
               {
                 /* replace-start-value = item.name.children */
-                React.createElement('span', { dangerouslySetInnerHTML: { __html: item.name.children } })
+                React.createElement("span", {
+                  dangerouslySetInnerHTML: { __html: item.name.children },
+                })
                 /* replace-end-value */
               }
             </div>
             <div key="post" {...item.post}>
               {
                 /* replace-start-value = item.post.children */
-                React.createElement('span', { dangerouslySetInnerHTML: { __html: item.post.children } })
+                React.createElement("span", {
+                  dangerouslySetInnerHTML: { __html: item.post.children },
+                })
                 /* replace-end-value */
               }
             </div>
@@ -84,7 +97,7 @@ class Content9 extends React.PureComponent {
         {!isMobile && textWrapper}
       </OverPack>
     );
-  }
+  };
 
   render() {
     const { ...props } = this.props;
@@ -93,28 +106,21 @@ class Content9 extends React.PureComponent {
     delete props.isMobile;
     const children = dataSource.block.children.map(this.getBlockChildren);
     return (
-      <div
-        {...props}
-        {...dataSource.wrapper}
-      >
+      <div {...props} {...dataSource.wrapper}>
         <div {...dataSource.page}>
           <div
             {...dataSource.titleWrapper}
             /* replace-start */
             data-edit="titleWrapper"
-          /* replace-end */
+            /* replace-end */
           >
-            {
-              dataSource.titleWrapper.children.map(getChildrenToRender)
-            }
+            {dataSource.titleWrapper.children.map(getChildrenToRender)}
           </div>
-          <div {...dataSource.block}>
-            {children}
-          </div>
+          <div {...dataSource.block}>{children}</div>
         </div>
       </div>
     );
   }
 }
 
-export default Content9;
+export default { component: Content9, dataSource };

@@ -7,6 +7,7 @@ export default {
   },
   logo: {
     className: "header0-logo",
+    href: "/",
     children: "https://os.alipayobjects.com/rmsportal/mlcYmsRilwraoAe.svg",
   },
   Menu: {
@@ -16,75 +17,77 @@ export default {
         name: "item0",
         className: "header0-item",
         children: {
-          href: "#",
+          href: "/image",
           children: [
             {
-              children: "导航一",
+              children: "图片",
               name: "text",
             },
           ],
         },
-        subItem: [
-          {
-            name: "sub0",
-            className: "item-sub",
-            children: {
-              className: "item-sub-item",
-              children: [
-                {
-                  name: "image0",
-                  className: "item-image",
-                  children:
-                    "https://gw.alipayobjects.com/zos/rmsportal/ruHbkzzMKShUpDYMEmHM.svg",
-                },
-                {
-                  name: "title",
-                  className: "item-title",
-                  children: "Ant Design",
-                },
-                {
-                  name: "content",
-                  className: "item-content",
-                  children: "企业级 UI 设计体系",
-                },
-              ],
-            },
-          },
-          {
-            name: "sub1",
-            className: "item-sub",
-            children: {
-              className: "item-sub-item",
-              children: [
-                {
-                  name: "image0",
-                  className: "item-image",
-                  children:
-                    "https://gw.alipayobjects.com/zos/rmsportal/ruHbkzzMKShUpDYMEmHM.svg",
-                },
-                {
-                  name: "title",
-                  className: "item-title",
-                  children: "Ant Design",
-                },
-                {
-                  name: "content",
-                  className: "item-content",
-                  children: "企业级 UI 设计体系",
-                },
-              ],
-            },
-          },
-        ],
+        // subItem: [
+        //   {
+        //     name: "sub0",
+        //     className: "item-sub",
+        //     children: {
+        //       href: "/image",
+        //       className: "item-sub-item",
+        //       children: [
+        //         {
+        //           name: "image0",
+        //           className: "item-image",
+        //           children:
+        //             "https://gw.alipayobjects.com/zos/rmsportal/ruHbkzzMKShUpDYMEmHM.svg",
+        //         },
+        //         {
+        //           name: "title",
+        //           className: "item-title",
+        //           children: "Ant Design",
+        //         },
+        //         {
+        //           name: "content",
+        //           className: "item-content",
+        //           children: "企业级 UI 设计体系",
+        //         },
+        //       ],
+        //     },
+        //   },
+        //   {
+        //     name: "sub1",
+        //     className: "item-sub",
+        //     children: {
+        //       href: "/image",
+        //       className: "item-sub-item",
+        //       children: [
+        //         {
+        //           name: "image0",
+        //           className: "item-image",
+        //           children:
+        //             "https://gw.alipayobjects.com/zos/rmsportal/ruHbkzzMKShUpDYMEmHM.svg",
+        //         },
+        //         {
+        //           name: "title",
+        //           className: "item-title",
+        //           children: "Ant Design",
+        //         },
+        //         {
+        //           name: "content",
+        //           className: "item-content",
+        //           children: "企业级 UI 设计体系",
+        //         },
+        //       ],
+        //     },
+        //   },
+        // ],
       },
       {
         name: "item1",
         className: "header0-item",
         children: {
-          href: "#",
+          href: "/movie",
           children: [
             {
-              children: "导航二",
+              children: "电影",
               name: "text",
             },
           ],
@@ -94,10 +97,10 @@ export default {
         name: "item2",
         className: "header0-item",
         children: {
-          href: "#",
+          href: "/music",
           children: [
             {
-              children: "导航三",
+              children: "音乐",
               name: "text",
             },
           ],
@@ -107,10 +110,23 @@ export default {
         name: "item3",
         className: "header0-item",
         children: {
-          href: "#",
+          href: "/novel",
           children: [
             {
-              children: "导航四",
+              children: "小说",
+              name: "text",
+            },
+          ],
+        },
+      },
+      {
+        name: "item4",
+        className: "header0-item",
+        children: {
+          href: "/game",
+          children: [
+            {
+              children: "游戏",
               name: "text",
             },
           ],

@@ -1,14 +1,15 @@
-import React from 'react';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
-import { Row, Col } from 'antd';
+import React from "react";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
+import QueueAnim from "rc-queue-anim";
+import TweenOne from "rc-tween-one";
+import { Row, Col } from "antd";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from '../../utils';
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 function Pricing0(props) {
   const { ...tagProps } = props;
@@ -16,25 +17,29 @@ function Pricing0(props) {
   delete tagProps.dataSource;
   delete tagProps.isMobile;
   const animType = {
-    queue: isMobile ? 'bottom' : 'right',
-    one: isMobile ? {
-      scaleY: '+=0.3', opacity: 0, type: 'from', ease: 'easeOutQuad',
-    }
+    queue: isMobile ? "bottom" : "right",
+    one: isMobile
+      ? {
+          scaleY: "+=0.3",
+          opacity: 0,
+          type: "from",
+          ease: "easeOutQuad",
+        }
       : {
-        x: '-=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
-      },
+          x: "-=30",
+          opacity: 0,
+          type: "from",
+          ease: "easeOutQuad",
+        },
   };
   return (
-    <div
-      {...tagProps}
-      {...dataSource.wrapper}
-    >
+    <div {...tagProps} {...dataSource.wrapper}>
       <OverPack
         component={Row}
         {...dataSource.OverPack}
         /* replace-start */
         data-edit="Row,OverPack"
-      /* replace-end */
+        /* replace-end */
       >
         <TweenOne
           key="img"
@@ -42,14 +47,15 @@ function Pricing0(props) {
           resetStyle
           {...dataSource.imgWrapper}
           component={Col}
-          componentProps={{ md: dataSource.imgWrapper.md, xs: dataSource.imgWrapper.xs }}
+          componentProps={{
+            md: dataSource.imgWrapper.md,
+            xs: dataSource.imgWrapper.xs,
+          }}
           /* replace-start */
           data-edit="Col"
-        /* replace-end */
+          /* replace-end */
         >
-          <span
-            {...dataSource.img}
-          >
+          <span {...dataSource.img}>
             <img src={dataSource.img.children} width="100%" alt="img" />
           </span>
         </TweenOne>
@@ -57,21 +63,22 @@ function Pricing0(props) {
           key="text"
           type={animType.queue}
           leaveReverse
-          ease={['easeOutQuad', 'easeInQuad']}
+          ease={["easeOutQuad", "easeInQuad"]}
           {...dataSource.childWrapper}
           component={Col}
-          componentProps={{ md: dataSource.childWrapper.md, xs: dataSource.childWrapper.xs }}
+          componentProps={{
+            md: dataSource.childWrapper.md,
+            xs: dataSource.childWrapper.xs,
+          }}
           /* replace-start */
           data-edit="Col,childWrapper"
-        /* replace-end */
+          /* replace-end */
         >
-          {
-            dataSource.childWrapper.children.map(getChildrenToRender)
-          }
+          {dataSource.childWrapper.children.map(getChildrenToRender)}
         </QueueAnim>
       </OverPack>
     </div>
   );
 }
 
-export default Pricing0;
+export default { component: Pricing0, dataSource };

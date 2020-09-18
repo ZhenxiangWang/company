@@ -6,7 +6,7 @@ import TweenOne, { TweenOneGroup } from "rc-tween-one";
 import BannerAnim, { Element } from "rc-banner-anim";
 /* replace-start-value = import { isImg } from './utils'; */
 import { polyfill } from "react-lifecycles-compat";
-import { isImg } from "../../../../utils";
+import { isImg } from "../../utils";
 /* replace-end-value */
 import "rc-banner-anim/assets/index.css";
 /* replace-start */

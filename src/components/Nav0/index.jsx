@@ -1,5 +1,6 @@
 import React from "react";
 import TweenOne from "rc-tween-one";
+import { Link } from "react-router-dom";
 import { Menu } from "antd";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
 import { polyfill } from "react-lifecycles-compat";
@@ -80,14 +81,16 @@ class Header extends React.Component {
             {subItem.map(($item, ii) => {
               const { children: childItem } = $item;
               const child = childItem.href ? (
-                <a
+                <Link
                   {...childItem}
                   /* replace-start */
                   data-edit="linkA,titleWrapper"
                   /* replace-end */
+                  href={childItem.href}
+                  to={childItem.href}
                 >
                   {childItem.children.map(getChildrenToRender)}
-                </a>
+                </Link>
               ) : (
                 <div
                   {...childItem}
@@ -115,15 +118,17 @@ class Header extends React.Component {
           data-edit="Menu"
           /* replace-end */
         >
-          <a
+          <Link
             {...a}
             className={`header0-item-block ${a.className}`.trim()}
             /* replace-start */
             data-edit="linkA,textAndImage"
             /* replace-end */
+            href={a.href}
+            to={a.href}
           >
             {a.children.map(getChildrenToRender)}
-          </a>
+          </Link>
         </Item>
       );
     });
@@ -143,7 +148,9 @@ class Header extends React.Component {
             animation={{ x: -30, type: "from", ease: "easeOutQuad" }}
             {...dataSource.logo}
           >
-            <img width="100%" src={dataSource.logo.children} alt="img" />
+            <Link href={dataSource.logo.href} to={dataSource.logo.href}>
+              <img width="100%" src={dataSource.logo.children} alt="img" />
+            </Link>
           </TweenOne>
           {isMobile && (
             <div

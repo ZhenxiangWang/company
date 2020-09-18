@@ -1,12 +1,13 @@
-import React from 'react';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import QueueAnim from 'rc-queue-anim';
+import React from "react";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
+import QueueAnim from "rc-queue-anim";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from '../../utils';
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 class Content13 extends React.PureComponent {
   render() {
@@ -15,10 +16,7 @@ class Content13 extends React.PureComponent {
     delete props.dataSource;
     delete props.isMobile;
     return (
-      <OverPack
-        {...props}
-        {...dataSource.OverPack}
-      >
+      <OverPack {...props} {...dataSource.OverPack}>
         <QueueAnim
           type="bottom"
           leaveReverse
@@ -27,15 +25,13 @@ class Content13 extends React.PureComponent {
           {...dataSource.titleWrapper}
           /* replace-start */
           data-edit="titleWrapper"
-        /* replace-end */
+          /* replace-end */
         >
-          {
-            dataSource.titleWrapper.children.map(getChildrenToRender)
-          }
+          {dataSource.titleWrapper.children.map(getChildrenToRender)}
         </QueueAnim>
       </OverPack>
     );
   }
 }
 
-export default Content13;
+export default { component: Content13, dataSource };

@@ -3,9 +3,7 @@ import { Button } from "antd";
 import QueueAnim from "rc-queue-anim";
 import Texty from "rc-texty";
 import "rc-texty/assets/index.css";
-/* replace-start */
 import "./index.less";
-/* replace-end */
 import dataSource from "./data.source";
 
 class Banner extends React.PureComponent {

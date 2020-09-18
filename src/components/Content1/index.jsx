@@ -1,11 +1,12 @@
-import React from 'react';
-import QueueAnim from 'rc-queue-anim';
-import TweenOne from 'rc-tween-one';
-import { Row, Col } from 'antd';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import React from "react";
+import QueueAnim from "rc-queue-anim";
+import TweenOne from "rc-tween-one";
+import { Row, Col } from "antd";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 function Content1(props) {
   const { ...tagProps } = props;
@@ -13,25 +14,29 @@ function Content1(props) {
   delete tagProps.dataSource;
   delete tagProps.isMobile;
   const animType = {
-    queue: isMobile ? 'bottom' : 'right',
-    one: isMobile ? {
-      scaleY: '+=0.3', opacity: 0, type: 'from', ease: 'easeOutQuad',
-    }
+    queue: isMobile ? "bottom" : "right",
+    one: isMobile
+      ? {
+          scaleY: "+=0.3",
+          opacity: 0,
+          type: "from",
+          ease: "easeOutQuad",
+        }
       : {
-        x: '-=30', opacity: 0, type: 'from', ease: 'easeOutQuad',
-      },
+          x: "-=30",
+          opacity: 0,
+          type: "from",
+          ease: "easeOutQuad",
+        },
   };
   return (
-    <div
-      {...tagProps}
-      {...dataSource.wrapper}
-    >
+    <div {...tagProps} {...dataSource.wrapper}>
       <OverPack
         {...dataSource.OverPack}
         component={Row}
         /* replace-start */
         data-edit="Row,OverPack"
-      /* replace-end */
+        /* replace-end */
       >
         <TweenOne
           key="img"
@@ -39,14 +44,15 @@ function Content1(props) {
           resetStyle
           {...dataSource.imgWrapper}
           component={Col}
-          componentProps={{ md: dataSource.imgWrapper.md, xs: dataSource.imgWrapper.xs }}
+          componentProps={{
+            md: dataSource.imgWrapper.md,
+            xs: dataSource.imgWrapper.xs,
+          }}
           /* replace-start */
           data-edit="Col"
-        /* replace-end */
+          /* replace-end */
         >
-          <span
-            {...dataSource.img}
-          >
+          <span {...dataSource.img}>
             <img src={dataSource.img.children} width="100%" alt="img" />
           </span>
         </TweenOne>
@@ -54,25 +60,34 @@ function Content1(props) {
           key="text"
           type={animType.queue}
           leaveReverse
-          ease={['easeOutQuad', 'easeInQuad']}
+          ease={["easeOutQuad", "easeInQuad"]}
           {...dataSource.textWrapper}
           component={Col}
-          componentProps={{ md: dataSource.textWrapper.md, xs: dataSource.textWrapper.xs }}
+          componentProps={{
+            md: dataSource.textWrapper.md,
+            xs: dataSource.textWrapper.xs,
+          }}
           /* replace-start */
           data-edit="Col"
-        /* replace-end */
+          /* replace-end */
         >
           <h2 key="h1" {...dataSource.title}>
             {
               /* replace-start-value = dataSource.title.children */
-              React.createElement('span', { dangerouslySetInnerHTML: { __html: dataSource.title.children } })
+              React.createElement("span", {
+                dangerouslySetInnerHTML: { __html: dataSource.title.children },
+              })
               /* replace-end-value */
             }
           </h2>
           <div key="p" {...dataSource.content}>
             {
               /* replace-start-value = dataSource.content.children */
-              React.createElement('span', { dangerouslySetInnerHTML: { __html: dataSource.content.children } })
+              React.createElement("span", {
+                dangerouslySetInnerHTML: {
+                  __html: dataSource.content.children,
+                },
+              })
               /* replace-end-value */
             }
           </div>
@@ -82,4 +97,4 @@ function Content1(props) {
   );
 }
 
-export default Content1;
+export default { component: Content1, dataSource };

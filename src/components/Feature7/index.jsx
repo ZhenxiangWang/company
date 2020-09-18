@@ -1,14 +1,15 @@
-import React from 'react';
-import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import QueueAnim from 'rc-queue-anim';
-import { Row, Col } from 'antd';
+import React from "react";
+import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
+import QueueAnim from "rc-queue-anim";
+import { Row, Col } from "antd";
 
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from '../../utils';
+import { getChildrenToRender } from "../../utils";
 /* replace-end-value */
 /* replace-start */
-import './index.less';
+import "./index.less";
 /* replace-end */
+import dataSource from "./data.source";
 
 function Feature7(props) {
   const { dataSource, isMobile, ...tagProps } = props;
@@ -19,29 +20,26 @@ function Feature7(props) {
       key={i.toString()}
       /* replace-start */
       data-edit="Col"
-    /* replace-end */
+      /* replace-end */
     >
       <a
         {...item.children}
         /* replace-start */
         data-edit="linkA"
-      /* replace-end */
+        /* replace-end */
       >
         {item.children.children.map(getChildrenToRender)}
       </a>
     </Col>
   ));
   return (
-    <div
-      {...tagProps}
-      {...dataSource.wrapper}
-    >
+    <div {...tagProps} {...dataSource.wrapper}>
       <div {...dataSource.page}>
         <div
           {...dataSource.titleWrapper}
           /* replace-start */
           data-edit="titleWrapper"
-        /* replace-end */
+          /* replace-end */
         >
           {titleWrapper.children.map(getChildrenToRender)}
         </div>
@@ -55,7 +53,7 @@ function Feature7(props) {
             {...blockWrapper}
             /* replace-start */
             data-edit="Row"
-          /* replace-end */
+            /* replace-end */
           >
             {childrenToRender}
           </QueueAnim>
@@ -65,4 +63,4 @@ function Feature7(props) {
   );
 }
 
-export default Feature7;
+export default { component: Feature7, dataSource };
