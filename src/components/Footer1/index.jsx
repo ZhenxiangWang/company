@@ -4,10 +4,7 @@ import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
 import QueueAnim from "rc-queue-anim";
 import { Row, Col } from "antd";
 /* replace-start-value = import { getChildrenToRender } from './utils'; */
-import { getChildrenToRender } from "../../utils";
-/* replace-end-value */
-/* replace-start-value = import { isImg } from './utils'; */
-import { isImg } from "../../../../utils";
+import { getChildrenToRender, isImg } from "../../utils";
 /* replace-end-value */
 /* replace-start */
 import "./index.less";

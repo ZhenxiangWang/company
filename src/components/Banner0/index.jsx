@@ -4,7 +4,7 @@ import { DownOutlined } from "@ant-design/icons";
 import QueueAnim from "rc-queue-anim";
 import TweenOne from "rc-tween-one";
 /* replace-start-value = import { isImg } from './utils'; */
-import { isImg } from "../../../../utils";
+import { isImg } from "../../utils";
 /* replace-end-value */
 /* replace-start */
 import "./index.less";

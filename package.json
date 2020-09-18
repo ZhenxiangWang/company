@@ -15,12 +15,17 @@
     "rc-banner-anim": "^2.4.4",
     "rc-queue-anim": "^1.8.5",
     "rc-scroll-anim": "^2.7.4",
+    "rc-texty": "^0.2.0",
     "rc-tween-one": "^2.7.3",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.6",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3"
+    "react-scripts": "3.4.3",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-app-rewired start",

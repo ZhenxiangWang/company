@@ -2,7 +2,7 @@ import React from "react";
 import TweenOne from "rc-tween-one";
 import OverPack from "rc-scroll-anim/lib/ScrollOverPack";
 /* replace-start-value = import { isImg } from './utils'; */
-import { isImg } from "../../../../utils";
+import { isImg } from "../../utils";
 /* replace-end-value */
 /* replace-start */
 import "./index.less";
