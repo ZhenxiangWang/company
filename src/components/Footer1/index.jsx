@@ -48,7 +48,7 @@ class Footer extends React.Component {
               /* replace-end-value */
             }
           </h2>
-          <div {...childWrapper}>
+          <div {...childWrapper} className="center">
             {childWrapper.children.map(getChildrenToRender)}
           </div>
         </Col>
