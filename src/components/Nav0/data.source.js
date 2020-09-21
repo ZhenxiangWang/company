@@ -132,6 +132,19 @@ export default {
           ],
         },
       },
+      {
+        name: "item5",
+        className: "header0-item",
+        children: {
+          href: "/laugh",
+          children: [
+            {
+              children: "搞笑",
+              name: "text",
+            },
+          ],
+        },
+      },
     ],
   },
   mobileMenu: {
