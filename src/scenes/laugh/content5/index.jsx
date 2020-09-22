@@ -10,13 +10,7 @@ class Content5 extends React.PureComponent {
   getChildrenToRender = (data) =>
     data.map((item) => {
       return (
-        <Col
-          key={item.name}
-          {...item}
-          /* replace-start */
-          data-edit="Col"
-          /* replace-end */
-        >
+        <Col key={item.name} {...item} data-edit="Col">
           <a
             href={item.children.href}
             target="_blank"
@@ -24,19 +18,21 @@ class Content5 extends React.PureComponent {
           >
             <div {...item.children.wrapper}>
               <span {...item.children.img}>
-                <img src={item.children.img.children} height="100%" alt="img" />
+                <img
+                  src={item.children.img.children}
+                  width="100%"
+                  height="100%"
+                  object-fix="cover"
+                  alt="img"
+                />
               </span>
 
               <p {...item.children.content}>
-                {
-                  /* replace-start-value = item.children.content.children */
-                  React.createElement("span", {
-                    dangerouslySetInnerHTML: {
-                      __html: item.children.content.children,
-                    },
-                  })
-                  /* replace-end-value */
-                }
+                {React.createElement("span", {
+                  dangerouslySetInnerHTML: {
+                    __html: item.children.content.children,
+                  },
+                })}
               </p>
             </div>
           </a>
@@ -58,9 +54,7 @@ class Content5 extends React.PureComponent {
           <div
             key="title"
             {...dataSource.titleWrapper}
-            /* replace-start */
             data-edit="titleWrapper"
-            /* replace-end */
           >
             {dataSource.titleWrapper.children.map(getChildrenToRender)}
           </div>
@@ -79,9 +73,7 @@ class Content5 extends React.PureComponent {
               }}
               leave={{ y: "+=30", opacity: 0, ease: "easeInOutQuad" }}
               {...dataSource.block}
-              /* replace-start */
               data-edit="Row"
-              /* replace-end */
             >
               {childrenToRender}
             </TweenOneGroup>
