@@ -6,6 +6,7 @@ import Music from "./scenes/music";
 import Novel from "./scenes/novel";
 import Image from "./scenes/image";
 import Game from "./scenes/game";
+import Laugh from "./scenes/laugh";
 
 export default () => (
   <Router>
@@ -16,6 +17,7 @@ export default () => (
       <Route path="/novel" component={Novel} />
       <Route path="/image" component={Image} />
       <Route path="/game" component={Game} />
+      <Route path="/laugh" component={Laugh} />
     </Switch>
   </Router>
 );
