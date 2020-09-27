@@ -98,6 +98,13 @@ export default {
         content: "隔几天来看一次，这视频我可以笑一年",
         href: "https://www.bilibili.com/video/BV1xJ411r7Yo",
       }),
+      getBlock({
+        name: "block7",
+        img:
+          "https://i.ytimg.com/vi/PcT8GwYX9OA/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLAsEVblgV55J9SIEz3XpX51nyPLUw",
+        content: "宇宙网红特朗普2018搞笑时刻大合集！",
+        href: "https://www.youtube.com/watch?v=PcT8GwYX9OA",
+      }),
     ],
   },
 };
